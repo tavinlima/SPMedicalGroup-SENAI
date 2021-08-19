@@ -16,6 +16,7 @@ nomePaciente
 dataNasc
 Telefone (UNIQUE)
 CPF (Unique)
+RG (UNIQUE)
 Endereco
 
 especialidade
@@ -33,7 +34,8 @@ Clinica
 idClinica (PK)
 idMedico (FK)
 enderecoClinica
-horaFuncionamento
+horaAbre
+horaFecha
 CNPJ (UNIQUE)
 nomeFantasia
 RazaoSocial (UNIQUE)
