@@ -1,0 +1,51 @@
+tipoUsuario
+idTipoUsuario (PK)
+tituloTipoUsuario
+
+Usuario
+idUsuario(PK)
+idTipoUsuario (FK)
+nomeUsuario
+email (UNIQUE)
+senha
+
+Paciente
+idPaciente (PK)
+idUsuario (FK)
+nomePaciente
+dataNasc
+Telefone (UNIQUE)
+CPF (Unique)
+Endereco
+
+especialidade
+idEspecialidade (PK)
+tituloEspecialidade
+
+Medico
+idMedico (PK)
+idEspecialidade (FK)
+idUsuario (FK)
+nomeMedico
+CRM (UNIQUE)
+
+Clinica
+idClinica (PK)
+idMedico (FK)
+enderecoClinica
+horaFuncionamento
+CNPJ (UNIQUE)
+nomeFantasia
+RazaoSocial (UNIQUE)
+
+Situacao
+idSituacao (PK)
+statusSituacao (status: confirmada, cancelada, e aguardando)
+
+Consulta
+idConsulta (PK)
+idPaciente (FK)
+idMedico (FK)
+idSituacao (FK)
+descricao
+dataConsulta
