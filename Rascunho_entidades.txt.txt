@@ -42,7 +42,7 @@ RazaoSocial (UNIQUE)
 
 Situacao
 idSituacao (PK)
-statusSituacao (status: confirmada, cancelada, e aguardando)
+statusSituacao 
 
 Consulta
 idConsulta (PK)
