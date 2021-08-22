@@ -3,10 +3,13 @@
 USE SPMEDGROUP_GUSTAVO;
 GO
 
+-- Inserindo dados nas tabelas de:
+-- TipoUsuario
 INSERT INTO tipoUsuario (tituloTipoUsuario)
 VALUES ('Administrador'), ('Médico'), ('Paciente');
 GO
 
+-- Usuario
 INSERT INTO usuario (idTipoUsuario, nomeUsuario, email, senha)
 VALUES (2, 'Ricardo Lemos', 'ricardo.lemos@spmedicalgroup.com.br', '11111111'),
 	   (2, 'Roberto Possarle', 'roberto.possarle@spmedicalgroup.com.br', '22222222'),
@@ -20,10 +23,12 @@ VALUES (2, 'Ricardo Lemos', 'ricardo.lemos@spmedicalgroup.com.br', '11111111'),
 	   (3, 'Mariana', 'mariana@outlook.com', '10101010');
 GO
 
+-- Situação
 INSERT INTO situacao (statusSituacao)
 VALUES ('Agendada'), ('Realizada'), ('Cancelada');
 GO
 
+--Paciente
 INSERT INTO paciente (idUsuario, dataNasc, telefone, CPF, RG, endereco)
 VALUES (4, '1983-10-13', '113456-7654', '94839859000',	'43522543-5', 'Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'),
 	   (5,	'2001-7-23', '1198765-6543',	'73556944057',	'32654345-7',	'Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200'),
@@ -44,6 +49,7 @@ SET dataNasc = '2018-3-5'
 WHERE idPaciente = 7
 */
 
+-- Especialidade
 INSERT INTO especialidade (tituloEspecialidade)
 VALUES ('Acupuntura'),
        ('Anestesiologia'),
@@ -63,16 +69,19 @@ VALUES ('Acupuntura'),
 	   ('Psiquiatria');
 GO
 
+-- Clinica
 INSERT INTO clinica (enderecoClinica, horaAbre, horaFecha, CNPJ, nomeFantasia, RazaoSocial)
 VALUES ('Av. Barão Limeira, 532, São Paulo, SP', '07:00:00', '19:00:00', '86.400.902/0001-30',	'Clinica Possarle',	'SP Medical Group');
 GO
 
+-- Medico
 INSERT INTO medico (idUsuario, idEspecialidade, idClinica, CRM)
 VALUES (1, 2, 1, '54356-SP'),
        (2, 16, 1, '53452-SP'),
 	   (3, 15, 1, '65463-SP');
 GO
 
+-- Consulta
 INSERT INTO consulta (idPaciente, idMedico, descricao, dataConsulta, idSituacao)
 VALUES (7,	3, 'Check-Up Anual', '20/01/2020 15:00:00', 2),
        (2,	2, 'Consulta Semanal', '20/01/2020 10:00:00', 3),

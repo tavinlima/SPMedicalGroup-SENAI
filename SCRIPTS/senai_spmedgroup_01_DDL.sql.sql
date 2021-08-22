@@ -6,12 +6,15 @@ GO
 USE SPMEDGROUP_GUSTAVO;
 GO
 
+-- Criação das tabelas de:
+-- tipoUsuario
 CREATE TABLE tipoUsuario (
 	idTipoUsuario TINYINT PRIMARY KEY IDENTITY(1,1),
 	tituloTipoUsuario VARCHAR(50) UNIQUE NOT NULL
 );
 GO
 
+-- Usuario
 CREATE TABLE usuario (
 	idUsuario INT PRIMARY KEY IDENTITY(1,1),
 	idTipoUsuario TINYINT FOREIGN KEY REFERENCES tipoUsuario(idTipoUsuario),
@@ -21,12 +24,14 @@ CREATE TABLE usuario (
 );
 GO
 
+-- Situacao
 CREATE TABLE situacao (
 	idSituacao TINYINT PRIMARY KEY IDENTITY(1,1),
 	statusSituacao VARCHAR(25) UNIQUE NOT NULL
 );
 GO
 
+-- Paciente
 CREATE TABLE paciente (
 	idPaciente INT PRIMARY KEY IDENTITY(1,1),
 	idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
@@ -38,12 +43,14 @@ CREATE TABLE paciente (
 );
 GO
 
+-- Especialidade
 CREATE TABLE especialidade (
 	idEspecialidade SMALLINT PRIMARY KEY IDENTITY(1,1),
 	tituloEspecialidade VARCHAR(100) UNIQUE NOT NULL
 );
 GO
 
+-- Clinica
 CREATE TABLE clinica(
 	idClinica TINYINT PRIMARY KEY IDENTITY(1,1),
 	enderecoClinica VARCHAR(150) UNIQUE NOT NULL,
@@ -55,7 +62,7 @@ CREATE TABLE clinica(
 );
 GO
 
-
+-- Medico
 CREATE TABLE medico (
 	idMedico INT PRIMARY KEY IDENTITY(1,1),
 	idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
@@ -65,6 +72,7 @@ CREATE TABLE medico (
 );
 GO
 
+-- Consulta
 CREATE TABLE consulta(
 	idConsulta INT PRIMARY KEY IDENTITY(1,1),
 	idPaciente INT FOREIGN KEY REFERENCES paciente(idPaciente),

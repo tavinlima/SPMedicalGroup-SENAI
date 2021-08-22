@@ -3,21 +3,30 @@
 USE SPMEDGROUP_GUSTAVO;
 GO
 
-SELECT * FROM tipoUsuario
+-- Listando dados de todas as tabelas criadas
+SELECT * FROM tipoUsuario;
+GO
 
-SELECT * FROM usuario
+SELECT * FROM usuario;
+GO
 
-SELECT * FROM situacao
+SELECT * FROM situacao;
+GO
 
-SELECT * FROM paciente
+SELECT * FROM paciente;
+GO
 
-SELECT * FROM especialidade 
+SELECT * FROM especialidade;
+GO
 
-SELECT * FROM clinica
+SELECT * FROM clinica;
+GO
 
-SELECT * FROM medico
+SELECT * FROM medico;
+GO
 
-SELECT * FROM consulta
+SELECT * FROM consulta;
+GO
 
 
 -- Listar todos os dados relacionados a consulta:
