@@ -11,7 +11,7 @@ namespace senai.spmedgroup.webApi.Interfaces
         void Cadastrar(Clinica novaClinica);
         List<Clinica> ListarTodas();
         Clinica BuscarPorId(int idClinica);
-        void Atualizar(Clinica novaClinica);
+        void Atualizar(Clinica clinicaAtualizada);
         void Deletar(int idClinica);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmedgroup.webApi.Domains;
 using senai.spmedgroup.webApi.Interfaces;
@@ -15,6 +16,7 @@ namespace senai.spmedgroup.webApi.Controllers
     // ex: http://localhost:5000/api/usuarios
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "1")]
     public class ConsultasController : ControllerBase
     {
         private IConsultaRepository _consultaRepository { get; set; }
@@ -37,6 +39,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "2")]
         [HttpGet("Paciente")]
         public IActionResult ListarMinhasPaciente()
         {
@@ -52,6 +55,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "3")]
         [HttpGet("Medico")]
         public IActionResult ListarMinhasMedico()
         {
@@ -72,6 +76,13 @@ namespace senai.spmedgroup.webApi.Controllers
         {
             try
             {
+                if (novaConsulta.IdMedico == null)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Uma nova consulta não pode ser marcada sem que um médico esteja vinculado."
+                    });
+                }
                 _consultaRepository.Cadastrar(novaConsulta);
 
                 return StatusCode(201);
@@ -87,6 +98,22 @@ namespace senai.spmedgroup.webApi.Controllers
         {
             try
             {
+                if (_consultaRepository.BuscarPorId(idConsulta) == null)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Não foi encontrada nenhuma consulta com o id informado."
+                    });
+                }
+
+                if (idConsulta <= 0)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Por favor, insira um id válido."
+                    });
+                }
+
                 _consultaRepository.MudarSituacao(idConsulta, situacao.IdSituacao.ToString());
 
                 return StatusCode(204);
@@ -102,6 +129,21 @@ namespace senai.spmedgroup.webApi.Controllers
         {
             try
             {
+                if (_consultaRepository.BuscarPorId(idConsulta) == null)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Não foi encontrada nenhuma consulta com o id informado."
+                    });
+                }
+
+                if (idConsulta <= 0)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Por favor, insira um id válido."
+                    });
+                }
                 _consultaRepository.AddDescricao(idConsulta, consulta.Descricao);
 
                 return StatusCode(204);
@@ -132,6 +174,22 @@ namespace senai.spmedgroup.webApi.Controllers
         {
             try
             {
+                if (_consultaRepository.BuscarPorId(idConsulta) == null)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Não foi encontrada nenhuma consulta com o id informado."
+                    });
+                }
+
+                if (idConsulta <= 0)
+                {
+                    return BadRequest(new
+                    {
+                        mensagem = "Por favor, insira um id válido."
+                    });
+                }
+
                 _consultaRepository.Deletar(idConsulta);
 
                 return StatusCode(204);

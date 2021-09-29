@@ -1,6 +1,8 @@
-﻿using senai.spmedgroup.webApi.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.spmedgroup.webApi.Context;
 using senai.spmedgroup.webApi.Domains;
 using senai.spmedgroup.webApi.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,16 +39,16 @@ namespace senai.spmedgroup.webApi.Repositories
             ctx.SaveChanges();
         }
 
-        public void Deletar(int idPaciente)
+        public void Deletar(int idUsuario)
         {
-            ctx.Pacientes.Remove(BuscarPorId(idPaciente));
+            ctx.Pacientes.Remove(BuscarPorId(idUsuario));
 
             ctx.SaveChanges();
         }
 
         public List<Paciente> ListarTodos()
         {
-            return ctx.Pacientes.ToList();
+            return ctx.Pacientes.Include(p => p.IdUsuarioNavigation).ToList();
         }
     }
 }

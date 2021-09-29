@@ -16,9 +16,14 @@ namespace senai.spmedgroup.webApi.Domains
         public int IdUsuario { get; set; }
         public byte? IdTipoUsuario { get; set; }
 
-        [Required(ErrorMessage = "Por favor, informe seu nome")]
+        [Required(ErrorMessage = "Por favor, informe o nome do Usuario")]
         public string NomeUsuario { get; set; }
+
+        [Required(ErrorMessage = "Por favor, informe o e-mail")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Por favor, informe a senha")]
+        [StringLength(256, MinimumLength = 8, ErrorMessage = "O campo senha precisa ter no mínimo 8 caracteres")]
         public string Senha { get; set; }
 
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }

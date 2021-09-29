@@ -15,7 +15,6 @@ namespace senai.spmedgroup.webApi.Interfaces
         List<Paciente> ListarTodos();
         Paciente BuscarPorId(int idPaciente);
         void Atualizar(Paciente pacienteAtualizado);
-        void Deletar(int idPaciente);
-
+        void Deletar(int idUsuario);
     }
 }

@@ -1,4 +1,5 @@
-﻿using senai.spmedgroup.webApi.Domains;
+﻿using Microsoft.AspNetCore.Http;
+using senai.spmedgroup.webApi.Domains;
 using System.Collections.Generic;
 
 namespace senai.spmedgroup.webApi.Interfaces
@@ -14,5 +15,8 @@ namespace senai.spmedgroup.webApi.Interfaces
         Usuario BuscarPorId(int idUsuario);
         void Atualizar(Usuario usuarioAtualizado);
         void Deletar(int idUsuario);
+
+        void SalvarPerfilDir(IFormFile foto, int idUsuario);
+        string ConsultarPerfilDir(int idUsuario);
     }
 }

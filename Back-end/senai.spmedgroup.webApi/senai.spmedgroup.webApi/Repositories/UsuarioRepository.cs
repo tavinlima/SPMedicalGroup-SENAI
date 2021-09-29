@@ -1,7 +1,10 @@
-﻿using senai.spmedgroup.webApi.Context;
+﻿using Microsoft.AspNetCore.Http;
+using senai.spmedgroup.webApi.Context;
 using senai.spmedgroup.webApi.Domains;
 using senai.spmedgroup.webApi.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace senai.spmedgroup.webApi.Repositories
@@ -34,6 +37,22 @@ namespace senai.spmedgroup.webApi.Repositories
             ctx.SaveChanges();
         }
 
+        public string ConsultarPerfilDir(int idUsuario)
+        {
+            string nomeArquivo = idUsuario.ToString() + ".png";
+
+            string caminho = Path.Combine("perfil", nomeArquivo);
+
+            if (File.Exists(caminho))
+            {
+                byte[] byteArquivo = File.ReadAllBytes(caminho);
+
+                return Convert.ToBase64String(byteArquivo);
+            }
+
+            return null;
+        }
+
         public void Deletar(int idUsuario)
         {
             ctx.Usuarios.Remove(BuscarPorId(idUsuario));
@@ -49,6 +68,16 @@ namespace senai.spmedgroup.webApi.Repositories
         public Usuario Login(string email, string senha)
         {
             return ctx.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+        }
+
+        public void SalvarPerfilDir(IFormFile foto, int idUsuario)
+        {
+            string nomeArquivo = idUsuario.ToString() + ".png";
+
+            using(var stream = new FileStream(Path.Combine("perfil", nomeArquivo), FileMode.Create))
+            {
+                foto.CopyTo(stream);
+            }
         }
     }
 }
