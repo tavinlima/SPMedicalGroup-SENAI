@@ -16,7 +16,9 @@ namespace senai.spmedgroup.webApi.Repositories
         {
             Consultum consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
 
-            if (id == consultaBuscada.IdMedico)
+            Medico medicoBuscado = ctx.Medicos.FirstOrDefault(c => c.IdUsuario == id);
+
+            if (medicoBuscado.IdMedico == consultaBuscada.IdMedico)
             {
                 if (consultaBuscada != null)
                 {
