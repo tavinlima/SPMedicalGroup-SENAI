@@ -16,7 +16,7 @@ namespace senai.spmedgroup.webApi.Controllers
     // ex: http://localhost:5000/api/usuarios
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "1")]
+    //[Authorize(Roles = "1")]
     public class ConsultasController : ControllerBase
     {
         private IConsultaRepository _consultaRepository { get; set; }
@@ -39,7 +39,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "3")]
         [HttpGet("Paciente")]
         public IActionResult ListarMinhasPaciente()
         {
@@ -55,7 +55,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
-        [Authorize(Roles = "3")]
+        [Authorize(Roles = "2")]
         [HttpGet("Medico")]
         public IActionResult ListarMinhasMedico()
         {
@@ -124,11 +124,14 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
+        [Authorize(Roles = "2")]
         [HttpPatch("descricao/{idConsulta}")]
-        public IActionResult AddDescricao(int idConsulta, Consultum consulta)
+        public IActionResult AddDescricao(int idConsulta, Consultum consulta, int id)
         {
             try
             {
+                id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
                 if (_consultaRepository.BuscarPorId(idConsulta) == null)
                 {
                     return BadRequest(new
@@ -144,7 +147,7 @@ namespace senai.spmedgroup.webApi.Controllers
                         mensagem = "Por favor, insira um id válido."
                     });
                 }
-                _consultaRepository.AddDescricao(idConsulta, consulta.Descricao);
+                _consultaRepository.AddDescricao(idConsulta, consulta.Descricao, id);
 
                 return StatusCode(204);
             }

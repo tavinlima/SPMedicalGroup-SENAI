@@ -41,7 +41,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
-        [HttpGet("idPaciente")]
+        [HttpGet("{idPaciente}")]
         public IActionResult BuscarPorId(int idPaciente)
         {
             try
@@ -84,7 +84,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
-        [HttpDelete("deletar/idUsuario")]
+        [HttpDelete("deletar/{idUsuario}")]
         public IActionResult Deletar(int idUsuario)
         {
             try

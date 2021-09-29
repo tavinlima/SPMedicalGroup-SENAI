@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai.spmedgroup.webApi</name>
+    </assembly>
+    <members>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.IClinicaRepository">
+            <summary>
+            Interface responsável pelo ClinicaRepository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.IConsultaRepository">
+            <summary>
+            Repositório responsável pela ConsultaRepository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.IEspecialidadeRepository">
+            <summary>
+            Interface responsável pelo Especialidade Repository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.IMedicoRepository">
+            <summary>
+            Interface responsável pelo MedicoRepository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.IPacienteRepository">
+            <summary>
+            Interface responsável pelo PacienteRepository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.ITipoUsuarioRepository">
+            <summary>
+            Interface responsável pelo TipoUsuarioRepository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável pelo UsuarioRepository
+            </summary>
+        </member>
+        <member name="T:senai.spmedgroup.webApi.ViewModels.LoginViewModel">
+            <summary>
+            Classe responsável pelo modelo de login
+            </summary>
+        </member>
+    </members>
+</doc>

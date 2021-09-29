@@ -48,7 +48,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
-        [HttpGet("idClinica")]
+        [HttpGet("{idClinica}")]
         public IActionResult BuscarPorId(int idClinica)
         {
             try
@@ -107,7 +107,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
         }
 
-        [HttpDelete("idClinica")]
+        [HttpDelete("{idClinica}")]
         public IActionResult Deletar(int idClinica)
         {
             try

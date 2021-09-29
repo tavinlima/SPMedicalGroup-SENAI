@@ -12,18 +12,22 @@ namespace senai.spmedgroup.webApi.Repositories
     public class ConsultaRepository : IConsultaRepository
     {
         readonly SpMedGroupContext ctx = new();
-        public void AddDescricao(int idConsulta, string descricao)
+        public void AddDescricao(int idConsulta, string descricao, int id)
         {
             Consultum consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == idConsulta);
 
-            if (consultaBuscada != null)
+            if (id == consultaBuscada.IdMedico)
             {
-                consultaBuscada.Descricao = descricao;
+                if (consultaBuscada != null)
+                {
+                    consultaBuscada.Descricao = descricao;
 
-                ctx.Consulta.Update(consultaBuscada);
+                    ctx.Consulta.Update(consultaBuscada);
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
+                }
             }
+
         }
 
         public void Atualizar(Consultum consultaAtt)

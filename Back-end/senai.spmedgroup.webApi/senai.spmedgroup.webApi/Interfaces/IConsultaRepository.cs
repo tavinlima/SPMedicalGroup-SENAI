@@ -18,7 +18,7 @@ namespace senai.spmedgroup.webApi.Interfaces
         void Deletar(int idConsulta);
         List<Consultum> ListarMinhasPaciente(int idPaciente);
         List<Consultum> ListarMinhasMedico(int idMedico);
-        void AddDescricao(int idConsulta, string descricao);
+        void AddDescricao(int idConsulta, string descricao, int id);
         void MudarSituacao(int idConsulta, string status);
     }
 }

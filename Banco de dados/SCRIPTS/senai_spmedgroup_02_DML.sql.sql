@@ -1,6 +1,6 @@
 -- DML
 
-USE SPMEDGROUP_GUSTAVO;
+USE SPMEDGROUP_OLIVEIRA;
 GO
 
 -- Inserindo dados nas tabelas de:
