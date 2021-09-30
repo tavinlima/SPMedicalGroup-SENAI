@@ -16,7 +16,7 @@ namespace senai.spmedgroup.webApi.Controllers
     // ex: http://localhost:5000/api/clinicas
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "1, 2, 3")]
+    [Authorize(Roles = "1")]
     public class ClinicasController : ControllerBase
     {
         private IClinicaRepository _clinicaRepository { get; set; }

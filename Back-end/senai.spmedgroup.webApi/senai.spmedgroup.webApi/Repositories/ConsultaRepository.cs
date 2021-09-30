@@ -2,10 +2,8 @@
 using senai.spmedgroup.webApi.Context;
 using senai.spmedgroup.webApi.Domains;
 using senai.spmedgroup.webApi.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace senai.spmedgroup.webApi.Repositories
 {
@@ -77,6 +75,11 @@ namespace senai.spmedgroup.webApi.Repositories
 
         public List<Consultum> ListarMinhasMedico(int idMedico)
         {
+            Medico medicoBuscado = ctx.Medicos.FirstOrDefault(c => c.IdUsuario == idMedico);
+            if (medicoBuscado.IdMedico != idMedico)
+            {
+                return null;
+            }
             return ctx.Consulta.Include("IdMedicoNavigation")
                 .Include("IdPacienteNavigation")
                 .Include("IdSituacaoNavigation")

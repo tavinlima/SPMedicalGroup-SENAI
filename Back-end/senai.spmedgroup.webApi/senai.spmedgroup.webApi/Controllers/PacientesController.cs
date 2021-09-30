@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmedgroup.webApi.Domains;
 using senai.spmedgroup.webApi.Interfaces;
 using senai.spmedgroup.webApi.Repositories;
 using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace senai.spmedgroup.webApi.Controllers
 {
@@ -18,7 +13,7 @@ namespace senai.spmedgroup.webApi.Controllers
     // ex: http://localhost:5000/api/pacientes
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "1, 2, 3")]
+    [Authorize(Roles = "1")]
     public class PacientesController : ControllerBase
     {
         private IPacienteRepository _pacienteRepository { get; set; }

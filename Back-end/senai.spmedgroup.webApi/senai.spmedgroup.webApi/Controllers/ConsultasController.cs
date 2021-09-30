@@ -16,7 +16,7 @@ namespace senai.spmedgroup.webApi.Controllers
     // ex: http://localhost:5000/api/usuarios
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "1")]
+    [Authorize]
     public class ConsultasController : ControllerBase
     {
         private IConsultaRepository _consultaRepository { get; set; }
@@ -35,7 +35,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
@@ -51,7 +51,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
@@ -63,11 +63,11 @@ namespace senai.spmedgroup.webApi.Controllers
             {
                 int idMedico = Convert.ToInt32(HttpContext.User.Claims.First(u => u.Type == JwtRegisteredClaimNames.Jti).Value);
 
-                return Ok(_consultaRepository.ListarMinhasPaciente(idMedico));
+                return Ok(_consultaRepository.ListarMinhasMedico(idMedico));
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
@@ -89,10 +89,11 @@ namespace senai.spmedgroup.webApi.Controllers
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpPatch("situacao/{idConsulta}")]
         public IActionResult MudarSituacao(int idConsulta, Situacao situacao)
         {
@@ -120,7 +121,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
@@ -130,6 +131,7 @@ namespace senai.spmedgroup.webApi.Controllers
         {
             try
             {
+
                 id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
 
                 if (_consultaRepository.BuscarPorId(idConsulta) == null)
@@ -149,11 +151,11 @@ namespace senai.spmedgroup.webApi.Controllers
                 }
                 _consultaRepository.AddDescricao(idConsulta, consulta.Descricao, id);
 
-                return StatusCode(204);
+                return StatusCode(200);
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
@@ -168,7 +170,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
 
@@ -199,7 +201,7 @@ namespace senai.spmedgroup.webApi.Controllers
             }
             catch (Exception erro)
             {
-                return BadRequest(erro);
+                return BadRequest(erro.Message);
             }
         }
     }
