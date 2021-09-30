@@ -1,0 +1,1095 @@
+{
+	"info": {
+		"_postman_id": "f718a0ad-cc1d-4c53-8352-5f4a13112f8d",
+		"name": "senai_spmedgroup_webApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Usuarios.Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jj@jj.com\",\r\n    \"senha\": \"jj123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idTipoUsuario\": 2,\r\n  \"nomeUsuario\": \"Fred\",\r\n  \"email\": \"Fred@gmail.com\",\r\n  \"senha\": \"Fred123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.ListarTodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjk1ODUyNCwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.qUJ4dyJoggIp_qKvMLEzL0-uzS_E2upD_k9JmUHTJZg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.BuscarPorId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.Atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idUsuario\" : 12,\r\n  \"idTipoUsuario\": 3,\r\n  \"nomeUsuario\": \"JayJay\",\r\n  \"email\": \"jayjay@jay.com\",\r\n  \"senha\": \"jay123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.Deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.PegarPerfil",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG8ucG9zc2FybGVAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiMiIsIm5hbWUiOiJSb2JlcnRvIFBvc3NhcmxlIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTYzMjg1NjE3NSwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.mInYtrw81aNgHNY9txJNWOB3X8NQbJ-UYlQxpSp2lQM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/foto/perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"foto",
+								"perfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios.SalvarFoto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYmVydG8ucG9zc2FybGVAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiMiIsIm5hbWUiOiJSb2JlcnRvIFBvc3NhcmxlIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTYzMjg1NjE3NSwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.mInYtrw81aNgHNY9txJNWOB3X8NQbJ-UYlQxpSp2lQM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "arquivo",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "arquivo",
+									"type": "file",
+									"src": "/C:/Users/Dell/Pictures/Saved Pictures/perfilteste.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios/foto/perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios",
+								"foto",
+								"perfil"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consultas",
+			"item": [
+				{
+					"name": "Consultas.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idPaciente\": 7,\r\n  \"idMedico\": 2,\r\n  \"descricao\": \"\",\r\n  \"dataConsulta\": \"2021-09-28\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.ListarTodas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiMSIsIm5hbWUiOiJSaWNhcmRvIExlbW9zIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTYzMjk1ODYxNCwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.TxRYfNJIVPpYYLErpF9hjm2JEByAhmKwB-782HCL_N8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.ListarMinhasPaciente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZXhhbmRyZUBnbWFpbC5jb20iLCJqdGkiOiI1IiwibmFtZSI6IkFsZXhhbmRyZSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MzI5NjA2MjgsImlzcyI6InNlbmFpLnNwbWVkZ3JvdXAud2ViQVBJIiwiYXVkIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkifQ.7XRtTkDfuZZ8X1jl7A98bT8QKvt4KPKAtyMAJ6103qM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/consultas/paciente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas",
+								"paciente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.ListarMinhasMedico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiMSIsIm5hbWUiOiJSaWNhcmRvIExlbW9zIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTYzMjk1ODYxNCwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.TxRYfNJIVPpYYLErpF9hjm2JEByAhmKwB-782HCL_N8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/consultas/medico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas",
+								"medico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.MudarSituacao",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSituacao\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/consultas/situacao/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas",
+								"situacao",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.AddDescricao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2FyZG8ubGVtb3NAc3BtZWRpY2FsZ3JvdXAuY29tLmJyIiwianRpIjoiMSIsIm5hbWUiOiJSaWNhcmRvIExlbW9zIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMiIsImV4cCI6MTYzMjk1OTU5NywiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.paWht8zDpqZN-u9nmfXFW-queOLyOKxEXbzwMA2swoI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\" : \"Dor de barriga\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/consultas/descricao/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas",
+								"descricao",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPaciente\": 5,\r\n    \"idMedico\": 1,\r\n    \"dataConsulta\": \"2021-09-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultas.Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/consultas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"consultas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medicos",
+			"item": [
+				{
+					"name": "Medicos.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 13,\r\n    \"idClinica\": 2,\r\n    \"idEspecialidade\": 5,\r\n    \"crm\": \"66666-SP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medicos.BuscarPorId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "idMedico",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/medicos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"medicos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medicos.ListarTodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medicos.Atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idMedico\" : 4,\r\n    \"idUsuario\": 13,\r\n    \"idClinica\": 1,\r\n    \"idEspecialidade\": 4,\r\n    \"crm\": \"44444-SP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/medicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medicos.Deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/medicos/deletar/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"medicos",
+								"deletar",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pacientes",
+			"item": [
+				{
+					"name": "Pacientes.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 12,\r\n    \"dataNasc\": \"2012-04-29\",\r\n    \"telefone\": \"1199999-9999\",\r\n    \"cpf\": \"99999999999\",\r\n    \"rg\": \"99999999-9\",\r\n    \"endereco\": \"Rua top\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pacientes.BuscarPorId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/pacientes/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pacientes",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pacientes.ListarTodos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pacientes.Atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPaciente\" : 9,\r\n    \"idUsuario\": 12,\r\n    \"dataNasc\": \"2013-04-29\",\r\n    \"telefone\": \"1199998-9899\",\r\n    \"cpf\": \"88888888888\",\r\n    \"rg\": \"88888888-8\",\r\n    \"endereco\": \"Rua topissima\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/pacientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pacientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pacientes.Deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/pacientes/deletar/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pacientes",
+								"deletar",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clinicas",
+			"item": [
+				{
+					"name": "Clinica.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"enderecoClinica\": \"Rua das Mansões\",\r\n  \"horaAbre\": \"7:00\",\r\n  \"horaFecha\": \"19:00\",\r\n  \"cnpj\": \"123456\",\r\n  \"nomeFantasia\": \"Clinca das dores\",\r\n  \"razaoSocial\": \"Clinica top\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/clinicas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clinicas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinica.ListarTodas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/clinicas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clinicas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinica.BuscarPorId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/clinicas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clinicas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinica.Atualizar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idClinica\" : 2,\r\n  \"enderecoClinica\": \"LugarNenhum\",\r\n  \"horaAbre\": \"5:00\",\r\n  \"horaFecha\": \"17:00\",\r\n  \"cnpj\": \"78941\",\r\n  \"nomeFantasia\": \"Clinca top\",\r\n  \"razaoSocial\": \"Clinica das dores\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/clinicas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clinicas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinica.Deletar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpqQGpqLmNvbSIsImp0aSI6IjExIiwibmFtZSI6IkpvaG5hdGFuIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiMSIsImV4cCI6MTYzMjg4Mjk0MiwiaXNzIjoic2VuYWkuc3BtZWRncm91cC53ZWJBUEkiLCJhdWQiOiJzZW5haS5zcG1lZGdyb3VwLndlYkFQSSJ9.ONg0n8pHuzpJYSNthgkNbf0yLt5Bs-ta2qTOynr2yLU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/clinicas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"clinicas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
