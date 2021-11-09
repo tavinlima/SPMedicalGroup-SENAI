@@ -25,6 +25,17 @@ namespace senai.spmedgroup.webApi
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                                builder =>
+                                {
+                                    builder.WithOrigins("http://localhost:3000")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                                });
+            });
+
             // Adiciona o serviço do Swagger
 
             services.AddSwaggerGen(c =>
@@ -89,6 +100,8 @@ namespace senai.spmedgroup.webApi
             });
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
 
