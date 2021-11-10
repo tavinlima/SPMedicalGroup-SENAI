@@ -9,10 +9,6 @@ main{
     display: flex;
 }
 
-.container{
-  width: 90vw;
-}
-
 .menu_lateral{
   background-color: #83BEDF;
   display: flex;

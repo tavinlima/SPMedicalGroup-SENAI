@@ -3,24 +3,25 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import App from './App';
-import Login from './pages/login/login.jsx';
-import consultasAdm from './pages/consulta/listarAdm/listarAdm';
-
 import reportWebVitals from './reportWebVitals';
 import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import consultasMedico from './pages/consulta/listarMedicos/listarMedico';
+
+import App from './App';
+import Login from './pages/login/login.jsx';
+// import consultasAdm from './pages/consulta/listarAdm/listarAdm';
+// import consultasMedico from './pages/consulta/listarMedicos/listarMedico';
 import consultasPaciente from './pages/consulta/listarPaciente/listarPacientes';
+
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={App}></Route>
-        <Route path='/login' component={Login}></Route>
-        <Route path='/consultas/adm' component={consultasAdm}></Route>
-        <Route path='/consultas/medico' component={consultasMedico}></Route>
-        <Route path='/consultas/paciente' component={consultasPaciente}></Route>
+        <Route exact path="/" component={App}/>
+        <Route path='/login' component={Login}/>
+        {/* <Route path='/consultas/adm' component={consultasAdm}/>
+        <Route path='/consultas/medico' component={consultasMedico}/> */}
+        <Route path='/consultas/paciente' component={consultasPaciente}/>
         <Redirect to ='/'></Redirect>
       </Switch>
     </div>

@@ -93,4 +93,19 @@
     text-transform: uppercase;
     color: #83BEDF;
     font-size: 50px;
+    cursor: pointer
+}
+
+button:active{
+    color: black;
+}
+
+button:hover{
+    transform:scale(1.1)
+}
+
+.btn_login:disabled{
+    color: #AFAFAF;
+    cursor: not-allowed;
+    font-size: 25px;
 }
