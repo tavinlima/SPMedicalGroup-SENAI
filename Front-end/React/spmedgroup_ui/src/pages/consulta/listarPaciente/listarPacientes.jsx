@@ -1,7 +1,10 @@
 import { Component } from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
-import logo from "../../../assets/img/logospmed.png"
+import logo from "../../../assets/img/logo_white.png"
+import perfil from "../../../assets/img/perfilcebolateams.jpg"
+
+import "../../../assets/css/style.css"
 
 
 export default class consultasPaciente extends Component {
@@ -9,25 +12,33 @@ export default class consultasPaciente extends Component {
         return (
             <div>
                 <main>
-                    <aside>
-                        <img src={logo}></img>
-                        <span>nome</span>
+                    <section className="menu_lateral">
+                        <img src={logo} alt="logo_sp_med" className="logo_menu"></img>
+                        <div>
+                            <img src={perfil} alt="imagem_perfil" className="imagem_perfil_consulta"></img>
+                            <span>nome</span>
+                        </div>
                         <span>consultas</span>
-                    </aside>
-                    <section>
-                        <h2>Consultas</h2>
-                        <hr></hr>
-                        <section>
+                    </section>
+
+                    <section className="container_consultas container">
+                        <h2>Consultas <hr></hr></h2>
+
+                        <section className="container_fundo">
                             <input type="search"></input>
                             <h3>Lista de consultas</h3>
-                            <section>
+                            <section className="box_consulta">
                                 <ul>
-                                    <il>03/09/2021</il>
+                                    <li>03/09/2021</li>
                                     <hr></hr>
                                     <li>paciente</li>
+                                    <li>medico</li>
+                                    <li>situação</li>
+                                    <li>especialidade</li>
+                                    <li>descrição</li>
                                 </ul>
-                                
-                        </section>
+
+                            </section>
                         </section>
                     </section>
                 </main>

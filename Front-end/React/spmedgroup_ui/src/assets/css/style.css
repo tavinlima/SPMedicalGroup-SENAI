@@ -6,4 +6,56 @@
 
 main{
     background-color: #DFFBFF;
+    display: flex;
+}
+
+.container{
+  width: 90vw;
+}
+
+.menu_lateral{
+  background-color: #83BEDF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 240px;
+  height: 100vh;
+}
+
+.logo_menu{
+  width: 5vw;
+  color: #FFFFFF;
+}
+
+.imagem_perfil_consulta{
+  width: 50px;
+  border-radius: 50px;
+}
+
+.container_consultas{
+  border-radius: 50px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_fundo{
+  background-color: #FAFAFA;
+  width: 70vw;
+}
+
+.box_consulta{
+  background-color: #079DF0;
+  border-top-right-radius: 50px;
+  width: 325px;
+  height: 421px;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+ul{
+  list-style: none;
 }

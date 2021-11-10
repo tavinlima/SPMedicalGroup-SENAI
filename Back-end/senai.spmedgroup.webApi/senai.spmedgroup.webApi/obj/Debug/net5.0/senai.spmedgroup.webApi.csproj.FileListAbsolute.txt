@@ -59,7 +59,6 @@ C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.sp
 C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\staticwebassets\senai.spmedgroup.webApi.StaticWebAssets.xml
 C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\scopedcss\bundle\senai.spmedgroup.webApi.styles.css
 C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\senai.spmedgroup.webApi.RazorTargetAssemblyInfo.cache
-C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\senai.spmedgroup.webApi.csproj.CopyComplete
 C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\senai.spmedgroup.webApi.dll
 C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\ref\senai.spmedgroup.webApi.dll
 C:\Users\Dell\Desktop\SENAI_SpMedGroup\Back-end\senai.spmedgroup.webApi\senai.spmedgroup.webApi\obj\Debug\net5.0\senai.spmedgroup.webApi.pdb

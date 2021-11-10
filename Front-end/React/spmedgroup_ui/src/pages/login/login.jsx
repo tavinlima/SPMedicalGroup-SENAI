@@ -1,32 +1,35 @@
 import { Component } from "react";
 
-import banner from "../../assets/img/imglogin.png"
+import { Link } from "react-router-dom";
+
 import logo from "../../assets/img/logospmed.png"
 
 import "../../assets/css/login.css"
 
 export default class login extends Component {
-    render(){
+    render() {
         return (
             <div>
-                <main>
-                    <a href="http://localhost:3000/">Home</a>
+                <div className="conteudo_principal_login">
                     <section className="box_input">
-                        <span>Login</span>
+                        <span>Login </span>
+                        <div className="linha_login"></div>
+
                         <div className="input_login container">
                             <input type="email" placeholder="e-mail" />
                             <input type="password" placeholder="senha" />
-                            <a>esqueci minha senha</a>
-                            <button type="submit">entrar</button>
+                            <Link to="/">esqueci minha senha</Link>
+                            <button type="submit" className="btn_login">entrar</button>
                         </div>
                     </section>
                     <div>
-                        <img src={banner} alt="banner" class="img_banner"></img>
-                        <span>Bem vindo!</span>
-                        <img src={logo} alt="logo_sp_med_group"></img>
-                        <span>SP Medical Group</span>
+                        <div className="banner_login">
+                            <span className="span_login">Bem vindo!</span>
+                            <img src={logo} alt="logo_sp_med_group" class='logo_login'></img>
+                            <span className="subtexto_banner_login">SP Medical Group</span>
+                        </div>
                     </div>
-                </main>
+                </div>
             </div>
         )
     }
