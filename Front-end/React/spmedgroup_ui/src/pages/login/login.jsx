@@ -12,8 +12,8 @@ export default class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'ricardo.lemos@spmedicalgroup.com.br',
-            senha: '11111111',
+            email: 'bruno@gmail.com',
+            senha: '99999999',
             errorMessage: '',
             isLoading: false,
         };
@@ -66,7 +66,7 @@ export default class login extends Component {
         })
     }
 
-    atualizaCampoState = (campo) => {
+    atualizaState = (campo) => {
         this.setState({ [campo.target.name]: campo.target.value });
     }
 
@@ -85,14 +85,14 @@ export default class login extends Component {
                                     name="email"
                                     placeholder="e-mail"
                                     value={this.state.email}
-                                    onChange={this.atualizaCampoState} />
+                                    onChange={this.atualizaState} />
 
                                 <input
                                     type="password"
                                     name="senha"
                                     placeholder="senha"
                                     value={this.state.senha}
-                                    onChange={this.atualizaCampoState} />
+                                    onChange={this.atualizaState} />
                                 <p className="error_message">{this.state.errorMessage}</p>
                                 <Link to="/">esqueci minha senha</Link>
                                 {
@@ -104,7 +104,7 @@ export default class login extends Component {
                     <div>
                         <div className="banner_login">
                             <span className="span_login">Bem vindo!</span>
-                            <img src={logo} alt="logo_sp_med_group" class='logo_login'></img>
+                            <img src={logo} alt="logo_sp_med_group" className='logo_login'></img>
                             <span className="subtexto_banner_login">SP Medical Group</span>
                         </div>
                     </div>

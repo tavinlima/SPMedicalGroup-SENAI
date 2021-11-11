@@ -44,7 +44,7 @@ namespace senai.spmedgroup.webApi.Repositories
 
         public List<Medico> ListarTodos()
         {
-            return ctx.Medicos.Include(u => u.IdEspecialidadeNavigation).ToList();
+            return ctx.Medicos.Include(u => u.IdEspecialidadeNavigation).Include(u => u.IdUsuarioNavigation).ToList();
         }
     }
 }

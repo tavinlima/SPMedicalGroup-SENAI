@@ -8,7 +8,7 @@ import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-d
 
 import App from './App';
 import Login from './pages/login/login.jsx';
-// import consultasAdm from './pages/consulta/listarAdm/listarAdm';
+import consultasAdm from './pages/consulta/listarAdm/listarAdm';
 // import consultasMedico from './pages/consulta/listarMedicos/listarMedico';
 import consultasPaciente from './pages/consulta/listarPaciente/listarPacientes';
 
@@ -19,8 +19,8 @@ const routing = (
       <Switch>
         <Route exact path="/" component={App}/>
         <Route path='/login' component={Login}/>
-        {/* <Route path='/consultas/adm' component={consultasAdm}/>
-        <Route path='/consultas/medico' component={consultasMedico}/> */}
+        <Route path='/consultas/adm' component={consultasAdm}/>
+        {/* <Route path='/consultas/medico' component={consultasMedico}/> */}
         <Route path='/consultas/paciente' component={consultasPaciente}/>
         <Redirect to ='/'></Redirect>
       </Switch>

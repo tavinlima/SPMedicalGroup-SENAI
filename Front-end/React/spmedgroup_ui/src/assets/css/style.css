@@ -16,13 +16,22 @@ main{
 
 .menu_lateral{
   background-color: #83BEDF;
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  border-radius: 0px 50px 50px 0px;
+}
+
+.conteudo_menu{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 240px;
-  height: 100vh;
-  position: fixed;
+  height: 42vh;
+}
+
+.calendar_menu{
+  margin-top: 5px;
 }
 
 .logo_menu{

@@ -1,5 +1,5 @@
 import { Component } from "react";
-// import axios from 'axios';
+import axios from 'axios';
 
 import Header from "../../../components/header/header"
 
@@ -10,24 +10,51 @@ import calendar from "../../../assets/img/calendar.png"
 import "../../../assets/css/style.css"
 
 export default class consultasPaciente extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            listaConsultas: [],
+        }
+    }
+
+    buscarMinhasConsultas = () => {
+        axios('http://localhost:5000/api/Consultas/Paciente', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            }
+        }).then((response) => {
+            console.log(response)
+            if (response.status === 200) {
+                this.setState({ listaConsultas: response.data });
+                console.log(this.state.listaConsultas);
+            }
+        }).catch(erro => console.log(erro))
+    }
+
+    componentDidMount(){
+        this.buscarMinhasConsultas();
+    }
+
     render() {
         return (
             <div>
-                <Header/>
+                <Header />
                 <main>
-                    <section className="menu_lateral">
-                        <img src={logo} alt="logo_sp_med" className="logo_menu"></img>
-                        <div className="div_icon">
-                            <img src={perfil_foto} alt="imagem_perfil" className="imagem_perfil_consulta"></img>
-                            <span>nome</span>
-                        </div>
-                        <div className="div_icon">
-                            <img src={calendar} alt="icon_calendar"></img>
-                            <span>consultas</span>
+                <section className="menu_lateral">
+                        <div className="conteudo_menu">
+                            <img src={logo} alt="logo_sp_med" className="logo_menu"></img>
+                            <div className="div_icon">
+                                <img src={perfil_foto} alt="imagem_perfil" className="imagem_perfil_consulta"></img>
+                                <span>Gustavo</span>
+                            </div>
+                            <a className="div_icon" href='#container_consultas'>
+                                <img src={calendar} alt="icon_calendar" className="calendar_menu"></img>
+                                <span>consultas</span>
+                            </a>
                         </div>
                     </section>
 
-                    <section className="container_consultas container">
+                    <section className="container_consultas" id="container_consultas">
                         <h2>Consultas <hr></hr></h2>
 
                         <section className="container_fundo">
@@ -55,7 +82,7 @@ export default class consultasPaciente extends Component {
                                         <li>situação: </li>
                                         <select>
                                             <option value="valor1">Agendada</option>
-                                            <option value="valor2" selected>Cancelada</option>
+                                            <option value="valor2">Cancelada</option>
                                             <option value="valor3">Realizada</option>
                                         </select>
                                         <div className="separacao_consulta">
@@ -94,7 +121,7 @@ export default class consultasPaciente extends Component {
                                         <li>situação: </li>
                                         <select>
                                             <option value="valor1">Agendada</option>
-                                            <option value="valor2" selected>Cancelada</option>
+                                            <option value="valor2">Cancelada</option>
                                             <option value="valor3">Realizada</option>
                                         </select>
                                         <li>especialidade
@@ -126,7 +153,7 @@ export default class consultasPaciente extends Component {
                                         <li>situação: </li>
                                         <select>
                                             <option value="valor1">Agendada</option>
-                                            <option value="valor2" selected>Cancelada</option>
+                                            <option value="valor2">Cancelada</option>
                                             <option value="valor3">Realizada</option>
                                         </select>
                                         <li>especialidade
@@ -140,32 +167,6 @@ export default class consultasPaciente extends Component {
                                 </section>
                             </div>
 
-                            <section className="box_cadastro_consulta">
-                                <ul>
-                                    <li className="subtext_consulta">Nova consulta</li>
-                                    <hr></hr>
-                                    <div className="separacao_consulta">
-                                        <li>paciente: </li>
-                                        <select>
-                                            <option value="Adele">Adele Silva</option>
-                                            <option value="TXT">TXT</option>
-                                            <option value="Crisântemo">Crisântemo</option>
-                                        </select>
-                                    </div>
-                                    <div className="separacao_consulta">
-                                        <li>medico: </li>
-                                        <select>
-                                            <option value="Sarali">Sarali Passos</option>
-                                            <option value="Lady_Gaga">Lady Gaga</option>
-                                            <option value="Beyonce">Beyonce</option>
-                                        </select>
-                                    </div>
-                                    <li>Data da Consulta: </li>
-                                    <input type="datetime-local"></input>
-                                    <button type="submit">Cadastrar consulta</button>
-                                </ul>
-
-                            </section>
                         </section>
                     </section>
                 </main>

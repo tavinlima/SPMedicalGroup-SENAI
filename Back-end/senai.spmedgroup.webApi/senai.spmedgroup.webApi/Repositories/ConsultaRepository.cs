@@ -66,9 +66,14 @@ namespace senai.spmedgroup.webApi.Repositories
 
         public List<Consultum> ListarMinhasPaciente(int idPaciente)
         {
-            return ctx.Consulta.Include("IdMedicoNavigation")
+            return ctx.Consulta
+                .Include("IdMedicoNavigation")
+                .Include(c => c.IdMedicoNavigation.IdUsuarioNavigation)
+                .Include(c => c.IdMedicoNavigation.IdEspecialidadeNavigation)
                 .Include("IdPacienteNavigation")
+                .Include(c => c.IdPacienteNavigation.IdUsuarioNavigation)
                 .Include("IdSituacaoNavigation")
+                .Include(c => c.IdSituacaoNavigation)
                 .Where(c => c.IdPaciente == idPaciente)
                 .ToList();
         }
@@ -80,16 +85,29 @@ namespace senai.spmedgroup.webApi.Repositories
             {
                 return null;
             }
-            return ctx.Consulta.Include("IdMedicoNavigation")
+            return ctx.Consulta
+                .Include("IdMedicoNavigation")
+                .Include(c => c.IdMedicoNavigation.IdUsuarioNavigation)
+                .Include(c => c.IdMedicoNavigation.IdEspecialidadeNavigation)
                 .Include("IdPacienteNavigation")
+                .Include(c => c.IdPacienteNavigation.IdUsuarioNavigation)
                 .Include("IdSituacaoNavigation")
+                .Include(c => c.IdSituacaoNavigation)
                 .Where(c => c.IdMedico == idMedico)
                 .ToList();
         }
 
         public List<Consultum> ListarTodas()
         {
-            return ctx.Consulta.ToList();
+            return ctx.Consulta
+                .Include("IdSituacaoNavigation")
+                .Include(c => c.IdSituacaoNavigation)
+                .Include("IdMedicoNavigation")
+                .Include(c => c.IdMedicoNavigation.IdUsuarioNavigation)
+                .Include(c => c.IdMedicoNavigation.IdEspecialidadeNavigation)
+                .Include("IdPacienteNavigation")
+                .Include(c => c.IdPacienteNavigation.IdUsuarioNavigation)
+                .ToList(); ;
         }
 
         public void MudarSituacao(int idConsulta, string status)
