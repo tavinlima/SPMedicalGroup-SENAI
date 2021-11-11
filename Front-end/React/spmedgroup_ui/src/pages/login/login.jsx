@@ -43,15 +43,15 @@ export default class login extends Component {
                     this.props.history.push('/consultas/paciente');
                     console.log('estou logado: ' + usuarioAutenticado());
                 }
-                else if(parseJwt().role === '2'){
+                else if (parseJwt().role === '2') {
                     this.props.history.push('/consultas/medicos');
                     console.log('estou logado: ' + usuarioAutenticado());
                 }
-                else if(parseJwt().role === '1'){
+                else if (parseJwt().role === '1') {
                     this.props.history.push('/consultas/adm');
                     console.log('estou logado: ' + usuarioAutenticado());
                 }
-                else{
+                else {
                     this.props.history.push('/');
                     console.log('estou logado: ' + usuarioAutenticado());
                 }
@@ -93,9 +93,10 @@ export default class login extends Component {
                                     placeholder="senha"
                                     value={this.state.senha}
                                     onChange={this.atualizaCampoState} />
+                                <p className="error_message">{this.state.errorMessage}</p>
                                 <Link to="/">esqueci minha senha</Link>
                                 {
-                                    !this.state.isLoading ? <button type="submit" className="btn_login">entrar</button> : <button type="submit" className="btn_login" disabled>Carregando...</button>
+                                    !this.state.isLoading ? <button type="submit" className="btn_login" disabled={this.state.email === '' || this.state.senha === ''}>entrar</button> : <button type="submit" className="btn_login" disabled>Carregando...</button>
                                 }
                             </div>
                         </form>

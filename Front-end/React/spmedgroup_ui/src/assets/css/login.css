@@ -85,6 +85,11 @@
     color: #FAFAFA;
 }
 
+.error_message{
+    color: #FF0000;
+    font-weight: bolder;
+}
+
 .btn_login{
     border: none;
     background-color: transparent;
@@ -92,7 +97,7 @@
     text-decoration: none;
     text-transform: uppercase;
     color: #83BEDF;
-    font-size: 50px;
+    font-size: 30px;
     cursor: pointer
 }
 
@@ -108,4 +113,5 @@ button:hover{
     color: #AFAFAF;
     cursor: not-allowed;
     font-size: 25px;
+    transform: scale(1.0);
 }
