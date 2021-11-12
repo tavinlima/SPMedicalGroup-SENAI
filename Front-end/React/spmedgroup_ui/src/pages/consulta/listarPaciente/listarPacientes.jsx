@@ -31,7 +31,7 @@ export default class consultasPaciente extends Component {
         }).catch(erro => console.log(erro))
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.buscarMinhasConsultas();
     }
 
@@ -40,7 +40,7 @@ export default class consultasPaciente extends Component {
             <div>
                 <Header />
                 <main>
-                <section className="menu_lateral">
+                    <section className="menu_lateral">
                         <div className="conteudo_menu">
                             <img src={logo} alt="logo_sp_med" className="logo_menu"></img>
                             <div className="div_icon">
@@ -62,109 +62,46 @@ export default class consultasPaciente extends Component {
                             <h3>Lista de consultas</h3>
 
                             <div className="container_box">
+                                {
+                                    this.state.listaConsultas.map((consulta) => {
+                                        return (
+                                            <section key={consulta.idConsulta} className="box_consulta">
+                                                <ul >
+                                                    <li className="subtext_consulta">{Intl.DateTimeFormat("pt-BR",
+                                                        {
+                                                            year: 'numeric', month: 'numeric', day: 'numeric',
+                                                            hour: 'numeric', minute: 'numeric'
+                                                        }
+                                                    ).format(new Date(consulta.dataConsulta))}</li>
+                                                    <div className="separacao_consulta">
+                                                        <li>paciente: </li>
+                                                        <p className="subtext_consulta">{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                    </div>
+                                                    <div className="separacao_consulta">
+                                                        <li>medico: </li>
+                                                        <p className="subtext_consulta">{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                    </div>
+                                                    <li>situação: </li>
+                                                    <p className="subtext_consulta">{consulta.idSituacaoNavigation.statusSituacao}</p>
+                                                    <div className="separacao_consulta">
+                                                        <li>especialidade
+                                                            <p className="subtext_consulta">{consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</p>
+                                                        </li>
 
-                                <section className="box_consulta">
-                                    <ul>
-                                        <li className="subtext_consulta">03/09/2021 às 14:00</li>
-                                        <hr></hr>
-                                        <div className="separacao_consulta">
-                                            <li>paciente: </li>
-                                            <p className="subtext_consulta">
-                                                Adele Silva
-                                            </p>
-                                        </div>
-                                        <div className="separacao_consulta">
-                                            <li>medico: </li>
-                                            <p className="subtext_consulta">
-                                                Sarali Passos
-                                            </p>
-                                        </div>
-                                        <li>situação: </li>
-                                        <select>
-                                            <option value="valor1">Agendada</option>
-                                            <option value="valor2">Cancelada</option>
-                                            <option value="valor3">Realizada</option>
-                                        </select>
-                                        <div className="separacao_consulta">
-                                            <li>especialidade
-                                                <p className="subtext_consulta">Dermatologia</p>
-                                            </li>
+                                                    </div>
 
-                                        </div>
+                                                    <div className="separacao_consulta">
+                                                        <li>descrição
+                                                            <p className="subtext_consulta">{consulta.descricao}</p>
+                                                        </li>
 
-                                        <div className="separacao_consulta">
-                                            <li>descrição
-                                                <p className="subtext_consulta">Paciente Ok e feliz</p>
-                                            </li>
+                                                    </div>
+                                                </ul>
+                                            </section>
+                                        );
+                                    })
+                                }
 
-                                        </div>
-                                    </ul>
-
-                                </section>
-
-                                <section className="box_consulta">
-                                    <ul>
-                                        <li className="subtext_consulta">03/09/2021 às 14:00</li>
-                                        <hr></hr>
-                                        <div className="separacao_consulta">
-                                            <li>paciente: </li>
-                                            <p className="subtext_consulta">
-                                                Adele Silva
-                                            </p>
-                                        </div>
-                                        <div className="separacao_consulta">
-                                            <li>medico: </li>
-                                            <p className="subtext_consulta">
-                                                Sarali Passos
-                                            </p>
-                                        </div>
-                                        <li>situação: </li>
-                                        <select>
-                                            <option value="valor1">Agendada</option>
-                                            <option value="valor2">Cancelada</option>
-                                            <option value="valor3">Realizada</option>
-                                        </select>
-                                        <li>especialidade
-                                            <p className="subtext_consulta">Dermatologia</p>
-                                        </li>
-                                        <li>descrição
-                                            <p className="subtext_consulta">Paciente Ok e feliz</p>
-                                        </li>
-                                    </ul>
-
-                                </section>
-
-                                <section className="box_consulta">
-                                    <ul>
-                                        <li className="subtext_consulta">03/09/2021 às 14:00</li>
-                                        <hr></hr>
-                                        <div className="separacao_consulta">
-                                            <li>paciente: </li>
-                                            <p className="subtext_consulta">
-                                                Adele Silva
-                                            </p>
-                                        </div>
-                                        <div className="separacao_consulta">
-                                            <li>medico: </li>
-                                            <p className="subtext_consulta">
-                                                Sarali Passos
-                                            </p>
-                                        </div>
-                                        <li>situação: </li>
-                                        <select>
-                                            <option value="valor1">Agendada</option>
-                                            <option value="valor2">Cancelada</option>
-                                            <option value="valor3">Realizada</option>
-                                        </select>
-                                        <li>especialidade
-                                            <p className="subtext_consulta">Dermatologia</p>
-                                        </li>
-                                        <li>descrição
-                                            <p className="subtext_consulta">Paciente Ok e feliz</p>
-                                        </li>
-                                    </ul>
-
-                                </section>
                             </div>
 
                         </section>

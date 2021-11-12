@@ -17,7 +17,7 @@ main{
 .menu_lateral{
   background-color: #83BEDF;
   width: 240px;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   border-radius: 0px 50px 50px 0px;
 }
@@ -35,7 +35,7 @@ main{
 }
 
 .logo_menu{
-  width: 5vw;
+  width: 56px;
   color: #FFFFFF;
 }
 
@@ -67,14 +67,15 @@ main{
 }
 
 .box_consulta{
+  display: flex;
   background-color: #079DF0;
   margin: 10px 0;
   width: 190px;
   height: 40vh;
   border-radius: 50px;
-  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   box-shadow: 3px 5px 5px 1px #000000;
 }
 
@@ -112,4 +113,12 @@ ul{
   justify-content: space-evenly;
   align-items: center;
   box-shadow: 3px 5px 5px 1px #000000;
+}
+
+.box_cadastro_consulta input{
+  width: 11.4em;
+}
+
+.select_cadastro{
+  width: 6.6em;
 }
