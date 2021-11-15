@@ -1,23 +1,21 @@
-import { Component } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Header from "../../../components/header/header"
-
-import logo from "../../../assets/img/logo_white.png"
-import perfil_foto from "../../../assets/img/perfilcebolateams.jpg"
-import calendar from "../../../assets/img/calendar.png"
+import MenuLateral from "../../../components/menu_lateral/menu_lateral"
+import Footer from "../../../components/footer/footer";
 
 import "../../../assets/css/style.css"
 
-export default class consultasMedico extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            listaConsultas: [],
-        }
-    }
+export default function ConsultasMedico() {
+    const [listaConsultas, setListaConsultas] = useState([]);
+    const [idConsulta, setidConsulta] = useState(0);
+    const [novadescricao, setNovaDescricao] = useState('');
 
-    buscarConsultasMedico = () => {
+    const [isLoading, setIsLoading] = useState(false);
+
+    function buscarConsultasMedico() {
+
         axios('http://localhost:5000/api/Consultas/Medico', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
@@ -25,48 +23,59 @@ export default class consultasMedico extends Component {
         }).then((response) => {
             console.log(response)
             if (response.status === 200) {
-                this.setState({ listaConsultas: response.data });
-                console.log(this.state.listaConsultas);
+                setListaConsultas(response.data)
             }
         }).catch(erro => console.log(erro))
     }
 
-    componentDidMount() {
-        this.buscarConsultasMedico();
+    useEffect(buscarConsultasMedico, []);
+
+    function limparCampos() {
+        setNovaDescricao('');
     }
 
-    render() {
-        return (
-            <div>
+    function alterarDescricao(event) {
+        event.preventDefault();
+
+        setIsLoading(true);
+
+        axios.patch('http://localhost:5000/api/Consultas/descricao/' + idConsulta, {
+            descricao: novadescricao
+        },
+            {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+                }
+            }).then(response => {
+                if (response.status === 200) {
+                    console.log("descrição atualizada!");
+
+                    setIsLoading(false);
+                }
+            })
+            .then(buscarConsultasMedico)
+            .then(limparCampos)
+            .catch(erro => console.log(erro), setNovaDescricao(''), setIsLoading(false));
+    }
+
+    return (
+        <div>
+            <main>
+                <MenuLateral />
                 <Header />
-                <main>
-                    <section className="menu_lateral">
-                        <div className="conteudo_menu">
-                            <img src={logo} alt="logo_sp_med" className="logo_menu"></img>
-                            <div className="div_icon">
-                                <img src={perfil_foto} alt="imagem_perfil" className="imagem_perfil_consulta"></img>
-                                <span>Gustavo</span>
-                            </div>
-                            <a className="div_icon" href='#container_consultas'>
-                                <img src={calendar} alt="icon_calendar" className="calendar_menu"></img>
-                                <span>consultas</span>
-                            </a>
-                        </div>
-                    </section>
 
-                    <section className="container_consultas" id="container_consultas">
-                        <h2>Consultas <hr></hr></h2>
+                <section className="container_consultas" id="container_consultas">
+                    <h2>Consultas <hr></hr></h2>
 
-                        <section className="container_fundo">
-                            <input type="search"></input>
-                            <h3>Lista de consultas</h3>
-
-                            <div className="container_box">
+                    <section className="container_fundo">
+                        <h3>Lista de consultas</h3>
+                        <div className="container_box">
+                            <div className="container_box_listagem">
                                 {
-                                    this.state.listaConsultas.map((consulta) => {
+                                    listaConsultas.map((consulta) => {
                                         return (
-                                            <section className="box_consulta">
-                                                <ul key={consulta.idConsulta}>
+                                            <section className="box_consulta" key={consulta.idConsulta}>
+                                                <ul>
                                                     <li className="subtext_consulta">{Intl.DateTimeFormat("pt-BR",
                                                         {
                                                             year: 'numeric', month: 'numeric', day: 'numeric',
@@ -74,12 +83,14 @@ export default class consultasMedico extends Component {
                                                         }
                                                     ).format(new Date(consulta.dataConsulta))}</li>
                                                     <div className="separacao_consulta">
-                                                        <li>paciente: </li>
-                                                        <p className="subtext_consulta">{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                        <li>paciente:
+                                                            <p className="subtext_consulta">{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                        </li>
                                                     </div>
                                                     <div className="separacao_consulta">
-                                                        <li>medico: </li>
-                                                        <p className="subtext_consulta">{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                        <li>medico:
+                                                            <p className="subtext_consulta">{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                        </li>
                                                     </div>
                                                     <li>situação: </li>
                                                     <p className="subtext_consulta">{consulta.idSituacaoNavigation.statusSituacao}</p>
@@ -103,11 +114,59 @@ export default class consultasMedico extends Component {
                                 }
 
                             </div>
+                            <section className="box_cadastro_consulta">
+                                <form onSubmit={alterarDescricao}>
+                                    <ul>
+                                        <li className="subtext_consulta">Buscar Consulta</li>
+                                        <hr></hr>
+                                        <div className="separacao_consulta">
 
-                        </section>
+                                            <select
+                                                className="select_descricao"
+                                                name="idConsulta"
+                                                onChange={(campo) => setidConsulta(campo.target.value)}
+                                                value={idConsulta}>
+                                                <option aria-disabled="true" value="0" disabled>Selecione uma consulta</option>
+                                                {
+                                                    listaConsultas.map((consulta) => {
+                                                        return (
+                                                            <option key={consulta.idConsulta} value={consulta.idConsulta}>{Intl.DateTimeFormat("pt-BR",
+                                                                {
+                                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                                    hour: 'numeric', minute: 'numeric'
+                                                                }
+                                                            ).format(new Date(consulta.dataConsulta))}</option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+
+                                        </div>
+                                        <div className="descricao_consulta">
+                                            <span>Descrição
+                                            </span>
+                                            <input
+                                                required
+                                                type='text'
+                                                name='novadescricao'
+                                                value={novadescricao}
+                                                onChange={(campo) => setNovaDescricao(campo.target.value)}>
+                                            </input>
+                                        </div>
+                                        {
+                                            !isLoading ? <button type="submit" className="btn_consulta" disabled={novadescricao === ''}>Adicionar Descricao</button> : <button type="submit" className="btn_consulta" disabled>Carregando...</button>
+                                        }
+                                    </ul>
+                                </form>
+
+                            </section>
+                        </div>
+
+
                     </section>
-                </main>
-            </div>
-        )
-    }
+                </section>
+            </main>
+            <Footer></Footer>
+        </div>
+    )
 }

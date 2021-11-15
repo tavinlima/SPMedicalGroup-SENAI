@@ -44,7 +44,7 @@ export default class login extends Component {
                     console.log('estou logado: ' + usuarioAutenticado());
                 }
                 else if (parseJwt().role === '2') {
-                    this.props.history.push('/consultas/medicos');
+                    this.props.history.push('/consultas/medico');
                     console.log('estou logado: ' + usuarioAutenticado());
                 }
                 else if (parseJwt().role === '1') {
