@@ -68,19 +68,21 @@ export default class consultasAdm extends Component {
         }).catch(erro => console.log(erro))
     }
 
-    buscarSituacaoPorId = async (consulta) => {
-        await this.setState({ idSituacao: consulta.idSituacao })
+    buscarConsultaPorId = async (consulta) => {
+        this.setState({
+            idConsulta: consulta.idConsulta
+        })
+        await console.log('A consulta ' + this.state.idConsulta + ' foi selecionada ');
         console.log('idSituacao: ' + consulta.idSituacao + ' novo id: ' + this.state.idSituacao)
     }
 
     alterarSituacao = (consulta) => {
-        // consulta.preventDefault();
+        console.log(consulta)
+        consulta.preventDefault();
 
-        // console.log(this.setState({ idSituacao: consulta.idSituacao }))
-
-        console.log(this.state.idSituacao)
+        console.log(this.state.idConsulta)
         axios.patch('http://localhost:5000/api/Consultas/situacao/' + this.state.idConsulta, {
-            idSituacao: consulta.idSituacao
+            idSituacao: this.state.idSituacao
         }, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
@@ -89,7 +91,8 @@ export default class consultasAdm extends Component {
             if (resposta.status === 200) {
                 console.log('Situação alterada');
             }
-        }).catch(erro => console.log(erro))
+        }).then(this.buscarConsultas)
+            .catch(erro => console.log(erro))
     }
 
     cadastrarConsulta = (event) => {
@@ -129,10 +132,10 @@ export default class consultasAdm extends Component {
         this.setState({ [campo.target.name]: campo.target.value });
     }
 
-    atualizaStateSituacao = (idConsulta) => {
-        console.log(idConsulta)
-        this.setState({ idSituacao: idConsulta.value })
-        console.log(idConsulta.idSituacao)
+    atualizaStateSituacao = async (opcao) => {
+        console.log(this.state.idSituacao)
+        await this.setState({ idSituacao: opcao.target.value })
+        console.log(this.state.idSituacao)
     }
 
     componentDidMount() {
@@ -145,19 +148,6 @@ export default class consultasAdm extends Component {
         return (
             <div>
                 <main>
-                    {/* <section className="menu_lateral">
-                        <div className="conteudo_menu">
-                            <img src={logo} alt="logo_sp_med" className="logo_menu"></img>
-                            <div className="div_icon">
-                                <img src={perfil_foto} alt="imagem_perfil" className="imagem_perfil_consulta"></img>
-                                <span>Gustavo</span>
-                            </div>
-                            <a className="div_icon" href='#container_consultas'>
-                                <img src={calendar} alt="icon_calendar" className="calendar_menu"></img>
-                                <span>consultas</span>
-                            </a>
-                        </div>
-                    </section> */}
 
                     <MenuLateral />
 
@@ -192,19 +182,18 @@ export default class consultasAdm extends Component {
                                                     </div>
                                                     <li>situação:
                                                         <p className="subtext_consulta" value={consulta.idSituacao}>{consulta.idSituacaoNavigation.statusSituacao}</p>
-                                                        <form onSubmit={this.alterarSituacao}>
-                                                            <select className="select_cadastro" key={consulta.idConsulta} onChange={() => this.atualizaStateSituacao(consulta)} value={this.state.idSituacao}>
-                                                                <option value='0'>Selecione uma opção</option>
-                                                                <option value='1'>Agendada</option>
-                                                                <option value='2'>Realizada</option>
-                                                                <option value='3'>Cancelada</option>
 
-                                                            </select>
-                                                            {
-                                                                this.state.idSituacao !== 0 && <button type="submit" onClick={() => this.buscarSituacaoPorId(consulta)}>Salvar Alterações</button>
-                                                            }
+                                                        <select className="select_cadastro" key={consulta.idConsulta} onChange={this.atualizaStateSituacao} value={this.state.idSituacao} name="idSituacao">
+                                                            <option aria-disabled="true" value="0" disabled>Selecione uma opção</option>
+                                                            <option value='1'>Agendada</option>
+                                                            <option value='2'>Realizada</option>
+                                                            <option value='3'>Cancelada</option>
 
-                                                        </form>
+                                                        </select>
+
+                                                        {
+                                                            this.state.idSituacao !== 0 && <button type="submit" onClick={() => this.buscarConsultaPorId(consulta)} onClickCapture={this.alterarSituacao} className="btn_situacao">Salvar Alterações</button>
+                                                        }
 
                                                     </li>
                                                     <div className="separacao_consulta">
@@ -285,7 +274,6 @@ export default class consultasAdm extends Component {
 
                                     </ul>
                                 </form>
-
                             </div>
 
                         </section>

@@ -197,6 +197,15 @@ ul{
   margin-top: 10px;
 }
 
+.btn_situacao{
+  background-color: #FF0000;
+  color: #FFFFFF;
+  border-radius: 50px;
+  margin-top: 5px;
+  width: 152px;
+  height: 25px;
+}
+
 .btn_consulta:disabled{
   color: #AFAFAF;
   cursor: not-allowed;
