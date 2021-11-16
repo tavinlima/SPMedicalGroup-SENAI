@@ -69,10 +69,10 @@ export default class consultasAdm extends Component {
     }
 
     buscarConsultaPorId = async (consulta) => {
-        this.setState({
-            idConsulta: consulta.idConsulta
+        await this.setState({
+            idConsulta: consulta.idConsulta,
         })
-        await console.log('A consulta ' + this.state.idConsulta + ' foi selecionada ');
+        console.log('A consulta ' + this.state.idConsulta + ' foi selecionada ');
         console.log('idSituacao: ' + consulta.idSituacao + ' novo id: ' + this.state.idSituacao)
     }
 
@@ -88,8 +88,12 @@ export default class consultasAdm extends Component {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
         }).then((resposta) => {
-            if (resposta.status === 200) {
+            if (resposta.status === 204) {
                 console.log('Situação alterada');
+
+                this.setState({ idSituacao: 0 })
+
+                console.log(this.state.idSituacao)
             }
         }).then(this.buscarConsultas)
             .catch(erro => console.log(erro))
@@ -117,7 +121,10 @@ export default class consultasAdm extends Component {
         }).then((response) => {
             if (response.status === 201) {
 
-                this.setState({ isLoading: false });
+                this.setState({
+                    errorMessage: '',
+                    isLoading: false
+                });
 
                 console.log('Consulta cadastrada com sucesso!')
             }
@@ -134,7 +141,9 @@ export default class consultasAdm extends Component {
 
     atualizaStateSituacao = async (opcao) => {
         console.log(this.state.idSituacao)
-        await this.setState({ idSituacao: opcao.target.value })
+        await this.setState({
+            idSituacao: opcao.target.value
+        })
         console.log(this.state.idSituacao)
     }
 
@@ -165,52 +174,56 @@ export default class consultasAdm extends Component {
                                     {
                                         this.state.listaConsultas.map((consulta) => {
                                             return (
-                                                <ul className="box_consulta" key={consulta.idConsulta}>
-                                                    <li className="subtext_consulta">{Intl.DateTimeFormat("pt-BR",
+                                                <form onSubmit={this.alterarSituacao} key={consulta.idConsulta}>
+
+                                                    <ul className="box_consulta">
+                                                        <li className="subtext_consulta">{Intl.DateTimeFormat("pt-BR",
+                                                            {
+                                                                year: 'numeric', month: 'numeric', day: 'numeric',
+                                                                hour: 'numeric', minute: 'numeric'
+                                                            }
+                                                        ).format(new Date(consulta.dataConsulta))}</li>
+                                                        <li>paciente:
+                                                            <p className="subtext_consulta">{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                        </li>
+                                                        <div className="separacao_consulta">
+                                                            <li>medico:
+                                                                <p className="subtext_consulta">{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                            </li>
+                                                        </div>
+                                                        <li>situação:
+                                                            <p className="subtext_consulta" value={consulta.idConsulta}>{consulta.idSituacaoNavigation.statusSituacao}</p>
+
+                                                            <select  key={consulta.idConsulta} className="select_cadastro" onClick={() => this.buscarConsultaPorId(consulta)} onChange={this.atualizaStateSituacao} value={this.state.idSituacao} name="idSituacao">
+                                                                <option aria-disabled="true" value="0" disabled>Selecione uma opção</option>
+                                                                <option value='1'>Agendada</option>
+                                                                <option value='2'>Realizada</option>
+                                                                <option value='3'>Cancelada</option>
+
+                                                            </select>
+
+
+                                                        </li>
+                                                        <div className="separacao_consulta">
+                                                            <li>especialidade:
+                                                                <p className="subtext_consulta">{consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</p>
+                                                            </li>
+
+                                                        </div>
+
+                                                        <div className="separacao_consulta">
+                                                            <li>descrição
+                                                                <p className="subtext_consulta">{consulta.descricao}</p>
+                                                            </li>
+
+                                                        </div>
+
                                                         {
-                                                            year: 'numeric', month: 'numeric', day: 'numeric',
-                                                            hour: 'numeric', minute: 'numeric'
-                                                        }
-                                                    ).format(new Date(consulta.dataConsulta))}</li>
-                                                    <li>paciente:
-                                                        <p className="subtext_consulta">{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</p>
-                                                    </li>
-                                                    <div className="separacao_consulta">
-                                                        <li>medico:
-                                                            <p className="subtext_consulta">{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</p>
-                                                        </li>
-                                                    </div>
-                                                    <li>situação:
-                                                        <p className="subtext_consulta" value={consulta.idSituacao}>{consulta.idSituacaoNavigation.statusSituacao}</p>
-
-                                                        <select className="select_cadastro" key={consulta.idConsulta} onChange={this.atualizaStateSituacao} value={this.state.idSituacao} name="idSituacao">
-                                                            <option aria-disabled="true" value="0" disabled>Selecione uma opção</option>
-                                                            <option value='1'>Agendada</option>
-                                                            <option value='2'>Realizada</option>
-                                                            <option value='3'>Cancelada</option>
-
-                                                        </select>
-
-                                                        {
-                                                            this.state.idSituacao !== 0 && <button type="submit" onClick={() => this.buscarConsultaPorId(consulta)} onClickCapture={this.alterarSituacao} className="btn_situacao">Salvar Alterações</button>
+                                                            this.state.idSituacao !== 0 &&<button type="submit" className="btn_situacao" disabled={this.state.idConsulta !== consulta.idConsulta}>Salvar Alterações</button>
                                                         }
 
-                                                    </li>
-                                                    <div className="separacao_consulta">
-                                                        <li>especialidade:
-                                                            <p className="subtext_consulta">{consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</p>
-                                                        </li>
-
-                                                    </div>
-
-                                                    <div className="separacao_consulta">
-                                                        <li>descrição
-                                                            <p className="subtext_consulta">{consulta.descricao}</p>
-                                                        </li>
-
-                                                    </div>
-
-                                                </ul>
+                                                    </ul>
+                                                </form>
                                             )
                                         })
                                     }

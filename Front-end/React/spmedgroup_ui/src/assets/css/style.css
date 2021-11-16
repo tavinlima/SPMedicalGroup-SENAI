@@ -206,6 +206,10 @@ ul{
   height: 25px;
 }
 
+.btn_situacao:disabled{
+  display: none;
+}
+
 .btn_consulta:disabled{
   color: #AFAFAF;
   cursor: not-allowed;
@@ -237,6 +241,10 @@ footer p{
 
   h3{
     margin: 20px 45px;
+  }
+
+  .menu_lateral{
+    width: 180px;
   }
 
   .container_box{

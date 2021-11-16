@@ -6,7 +6,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import App from './App';
 import Login from './pages/login/login.jsx';
 import consultasAdm from './pages/consulta/listarAdm/listarAdm';
 import consultasMedico from './pages/consulta/listarMedicos/listarMedico';
@@ -53,12 +52,11 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={App} />
         <Route path='/login' component={Login} />
         <PermissaoAdm path='/consultas/adm' component={consultasAdm} />
         <PermissaoMedico path='/consultas/medico' component={consultasMedico} />
         <PermissaoPaciente path='/consultas/paciente' component={consultasPaciente} />
-        <Redirect to='/'></Redirect>
+        <Redirect to='/login'></Redirect>
       </Switch>
     </div>
   </Router>

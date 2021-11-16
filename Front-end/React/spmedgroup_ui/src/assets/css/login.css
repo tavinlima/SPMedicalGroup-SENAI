@@ -67,6 +67,7 @@
 
 .input_login a{
     margin: 5px 0px 50px 0px;
+    width: max-content;
 }
 
 .logo_login{
