@@ -12,8 +12,8 @@ export default class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'adm@adm.com',
-            senha: '12121212',
+            email: '',
+            senha: '',
             errorMessage: '',
             isLoading: false,
         };
@@ -79,7 +79,7 @@ export default class login extends Component {
                         <div className="linha_login"></div>
 
                         <form onSubmit={this.efetuaLogin}>
-                            <div className="input_login container">
+                            <div className="input_login">
                                 <input
                                     type="email"
                                     name="email"
