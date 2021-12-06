@@ -16,6 +16,8 @@ import api from '../services/api'
 import { useNavigation } from '@react-navigation/native';
 import jwtDecode from 'jwt-decode';
 
+import { parseJwt } from '../services/auth';
+
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -27,8 +29,8 @@ export default function Login() {
             console.warn(email + senha)
 
             const resposta = await api.post('/login', {
-                email: email,
-                senha: senha,
+                email: 'roberto.possarle@spmedicalgroup.com.br',
+                senha: '22222222',
             })
 
             const token = resposta.data.token;
@@ -36,12 +38,27 @@ export default function Login() {
             await AsyncStorage.setItem('userToken', token);
 
             await console.warn(jwtDecode(token))
-            console.warn(token)
+            await console.warn(jwtDecode(token).role)
 
-            if (resposta.status == 200) {
-                navigation.navigate('ListagemPaciente')
+            const permissao = await jwtDecode(token).role
+
+            console.warn(permissao)
+
+            if (await permissao == 2) {
+
+                if (resposta.status == 200) {
+                    navigation.navigate('ListagemMedico');
+                }
+
             }
 
+            if (permissao == 3) {
+
+                if (resposta.status == 200) {
+                    navigation.navigate('ListagemPaciente');
+                }
+
+            }
 
         } catch (error) {
             console.warn(error);
@@ -69,6 +86,7 @@ export default function Login() {
                     value={email}
                 >
                     {/* ricardo.lemos@spmedicalgroup.com.br */}
+                    {/* ligia@gmail.com */}
                 </TextInput>
                 <TextInput
                     style={styles.inputLogin}
@@ -79,6 +97,7 @@ export default function Login() {
                     value={senha}
                 >
                     {/* 11111111 */}
+                    {/* 44444444 */}
                 </TextInput>
 
                 <TouchableOpacity

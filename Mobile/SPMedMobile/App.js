@@ -15,7 +15,7 @@ function App(){
     <NavigationContainer>
       <AuthStack.Navigator>
         <AuthStack.Screen name='Login' component={Login}></AuthStack.Screen>
-        <AuthStack.Screen name='ListarMedico' component={ListarMedico}></AuthStack.Screen>
+        <AuthStack.Screen name='ListagemMedico' component={ListarMedico}></AuthStack.Screen>
         <AuthStack.Screen name='ListagemPaciente' component={ListagemPaciente}></AuthStack.Screen>
       </AuthStack.Navigator>
     </NavigationContainer>
