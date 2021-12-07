@@ -16,35 +16,29 @@ import api from '../services/api'
 import { useNavigation } from '@react-navigation/native';
 import jwtDecode from 'jwt-decode';
 
-import { parseJwt } from '../services/auth';
-
-
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigation = useNavigation();
 
     async function RealizarLogin() {
         try {
-            console.warn(email + senha)
 
             const resposta = await api.post('/login', {
-                email: 'roberto.possarle@spmedicalgroup.com.br',
-                senha: '22222222',
+                email: email,
+                senha: senha,
             })
 
             const token = resposta.data.token;
 
-            await AsyncStorage.setItem('userToken', token);
+            setErrorMessage('');
 
-            await console.warn(jwtDecode(token))
-            await console.warn(jwtDecode(token).role)
+            await AsyncStorage.setItem('userToken', token);
 
             const permissao = await jwtDecode(token).role
 
-            console.warn(permissao)
-
-            if (await permissao == 2) {
+            if (permissao == 2) {
 
                 if (resposta.status == 200) {
                     navigation.navigate('ListagemMedico');
@@ -61,10 +55,10 @@ export default function Login() {
             }
 
         } catch (error) {
-            console.warn(error);
+            setErrorMessage('Email ou senha incorretos')
+            console.warn(error)
         }
     }
-    useEffect(() => RealizarLogin, []);
 
 
     return (
@@ -73,7 +67,7 @@ export default function Login() {
             source={require('../../assets/img/imglogin.png')}>
             <Image
                 style={styles.imgLogo}
-                source={require('../../assets/img/logospmed.png')} />
+                source={require('../../assets/img/logosmall.png')} />
             <View
                 style={styles.main}>
                 <Text style={styles.tituloTela}>Login</Text>
@@ -99,6 +93,9 @@ export default function Login() {
                     {/* 11111111 */}
                     {/* 44444444 */}
                 </TextInput>
+                {
+                    errorMessage != ''? <Text style={styles.errorMessage}>{errorMessage}</Text>:StyleSheet.none
+                }  
 
                 <TouchableOpacity
                     onPress={() => RealizarLogin()}>
@@ -118,16 +115,23 @@ const styles = StyleSheet.create({
     imgLogo: {
         marginTop: 20,
         marginLeft: 20,
-        width: '20.6%',
-        height: '15%',
+    },
+    errorMessage: {
+        padding: 5,
+        // height: 30,
+        fontFamily: 'Exo-Medium',
+        backgroundColor: 'white',
+        borderRadius: 50,
+        color: 'red'
     },
     tituloTela: {
-        fontFamily: '',
+        fontFamily: 'Exo-Medium',
         fontSize: 35,
         color: 'white',
         borderBottomWidth: 1,
         borderBottomColor: 'white',
         marginBottom: 10,
+        marginTop: 30,
     },
     inputLogin: {
         width: '60%',
@@ -137,12 +141,13 @@ const styles = StyleSheet.create({
         borderBottomColor: 'white',
         marginBottom: 50,
         color: 'white',
+        fontFamily: 'Exo-Medium',
     },
     btnLogar: {
+        fontFamily: 'Exo-Medium',
         marginTop: 25,
         textTransform: 'uppercase',
         color: '#83BEDF',
         fontSize: 35,
-        fontFamily: 'Exo'
     },
 })

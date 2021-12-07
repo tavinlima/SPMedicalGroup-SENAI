@@ -7,13 +7,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/screens/login'
 import ListarMedico from './src/screens/listagemMed'
 import ListagemPaciente from './src/screens/listagemPaciente'
+import { StatusBar } from 'react-native';
 
 const AuthStack = createStackNavigator();
 
-function App(){
-  return(
+function App() {
+  return (
     <NavigationContainer>
-      <AuthStack.Navigator>
+      <StatusBar
+        hidden={true}
+      />
+      <AuthStack.Navigator
+        initialRouteName='Login'
+        screenOptions={{
+          headerShown: false,
+        }}>
         <AuthStack.Screen name='Login' component={Login}></AuthStack.Screen>
         <AuthStack.Screen name='ListagemMedico' component={ListarMedico}></AuthStack.Screen>
         <AuthStack.Screen name='ListagemPaciente' component={ListagemPaciente}></AuthStack.Screen>
