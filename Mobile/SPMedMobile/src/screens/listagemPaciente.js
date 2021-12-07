@@ -1,4 +1,5 @@
 import React from 'react';
+import { Component } from 'react';
 import {
     Text,
     StyleSheet,
@@ -7,10 +8,10 @@ import {
     FlatList,
     TouchableOpacity,
 } from 'react-native';
-import api from '../services/api';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Component } from 'react';
+
+import api from '../services/api';
 
 export default class ListagemPaciente extends Component {
     constructor(props) {
@@ -111,8 +112,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Exo-Medium',
         color: 'red',
         marginTop: 10,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
     },
     titulo_logo: {
         width: '80%',
@@ -138,6 +137,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: 'white',
         alignItems: 'center',
+        marginBottom: 20,
     },
     boxConsulta: {
         width: 240,

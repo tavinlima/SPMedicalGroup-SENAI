@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
     },
     errorMessage: {
         padding: 5,
-        // height: 30,
         fontFamily: 'Exo-Medium',
         backgroundColor: 'white',
         borderRadius: 50,

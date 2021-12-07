@@ -1,5 +1,5 @@
 import React from 'react';
-// import { StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -7,7 +7,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/screens/login'
 import ListarMedico from './src/screens/listagemMed'
 import ListagemPaciente from './src/screens/listagemPaciente'
-import { StatusBar } from 'react-native';
 
 const AuthStack = createStackNavigator();
 
