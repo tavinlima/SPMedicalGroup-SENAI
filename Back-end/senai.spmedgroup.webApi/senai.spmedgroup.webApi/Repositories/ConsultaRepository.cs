@@ -74,8 +74,7 @@ namespace senai.spmedgroup.webApi.Repositories
                 .Include(c => c.IdPacienteNavigation.IdUsuarioNavigation)
                 .Include("IdSituacaoNavigation")
                 .Include(c => c.IdSituacaoNavigation)
-                .Where(c => c.IdPaciente == idPaciente)
-                .ToList();
+                .Where(c => c.IdPacienteNavigation.IdUsuarioNavigation.IdUsuario == idPaciente).ToList();
         }
 
         public List<Consultum> ListarMinhasMedico(int idMedico)
@@ -93,8 +92,7 @@ namespace senai.spmedgroup.webApi.Repositories
                 .Include(c => c.IdPacienteNavigation.IdUsuarioNavigation)
                 .Include("IdSituacaoNavigation")
                 .Include(c => c.IdSituacaoNavigation)
-                .Where(c => c.IdMedico == idMedico)
-                .ToList();
+                .Where(c => c.IdPacienteNavigation.IdUsuarioNavigation.IdUsuario == idMedico).ToList();
         }
 
         public List<Consultum> ListarTodas()
