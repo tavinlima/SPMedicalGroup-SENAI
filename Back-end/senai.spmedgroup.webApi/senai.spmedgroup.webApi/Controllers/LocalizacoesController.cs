@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using senai.spmedgroup.webApi.Domains;
 using senai.spmedgroup.webApi.Interfaces;
 using senai.spmedgroup.webApi.Repositories;
@@ -12,6 +13,7 @@ namespace senai.spmedgroup.webApi.Controllers
     // ex: http://localhost:5000/api/localizacoes
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "1")]
     public class LocalizacoesController : ControllerBase
     {
         private ILocalizacaoRepository _localizacaoRepository { get; set; }
