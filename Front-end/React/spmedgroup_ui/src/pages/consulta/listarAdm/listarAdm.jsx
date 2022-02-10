@@ -28,7 +28,7 @@ export default class consultasAdm extends Component {
     }
 
     buscarConsultas = () => {
-        axios('http://localhost:5000/api/Consultas', {
+        axios('https://62055bdb161670001741b9f2.mockapi.io/consulta', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
@@ -43,7 +43,7 @@ export default class consultasAdm extends Component {
     }
 
     buscarPacientes = () => {
-        axios('http://localhost:5000/api/Pacientes', {
+        axios('https://62055bdb161670001741b9f2.mockapi.io/consulta/1/paciente', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
@@ -56,7 +56,7 @@ export default class consultasAdm extends Component {
     }
 
     buscarMedicos = () => {
-        axios('http://localhost:5000/api/Medicos', {
+        axios('https://62055bdb161670001741b9f2.mockapi.io/consulta/2/medico', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
@@ -114,7 +114,7 @@ export default class consultasAdm extends Component {
 
         console.log(consulta)
 
-        axios.post('http://localhost:5000/api/Consultas', consulta, {
+        axios.post('https://62055bdb161670001741b9f2.mockapi.io/consulta', consulta, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
@@ -174,7 +174,7 @@ export default class consultasAdm extends Component {
                                     {
                                         this.state.listaConsultas.map((consulta) => {
                                             return (
-                                                <form onSubmit={this.alterarSituacao} key={consulta.idConsulta}>
+                                                <form onSubmit={this.alterarSituacao} key={consulta.id}>
 
                                                     <ul className="box_consulta">
                                                         <li className="subtext_consulta">{Intl.DateTimeFormat("pt-BR",
@@ -184,15 +184,15 @@ export default class consultasAdm extends Component {
                                                             }
                                                         ).format(new Date(consulta.dataConsulta))}</li>
                                                         <li>paciente:
-                                                            <p className="subtext_consulta">{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                            <p className="subtext_consulta">{consulta.idPaciente[0].nomePaciente}</p>
                                                         </li>
                                                         <div className="separacao_consulta">
                                                             <li>medico:
-                                                                <p className="subtext_consulta">{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</p>
+                                                                <p className="subtext_consulta">{consulta.idMedico[0].nomeMedico}</p>
                                                             </li>
                                                         </div>
                                                         <li>situação:
-                                                            <p className="subtext_consulta" value={consulta.idConsulta}>{consulta.idSituacaoNavigation.statusSituacao}</p>
+                                                            <p className="subtext_consulta" value={consulta.idConsulta}>{consulta.situacao}</p>
 
                                                             <select  key={consulta.idConsulta} className="select_cadastro" onClick={() => this.buscarConsultaPorId(consulta)} onChange={this.atualizaStateSituacao} value={this.state.idSituacao} name="idSituacao">
                                                                 <option aria-disabled="true" value="0" disabled>Selecione uma opção</option>
@@ -206,7 +206,7 @@ export default class consultasAdm extends Component {
                                                         </li>
                                                         <div className="separacao_consulta">
                                                             <li>especialidade:
-                                                                <p className="subtext_consulta">{consulta.idMedicoNavigation.idEspecialidadeNavigation.tituloEspecialidade}</p>
+                                                                <p className="subtext_consulta">{consulta.idMedico[0].especialidade}</p>
                                                             </li>
 
                                                         </div>
@@ -245,7 +245,7 @@ export default class consultasAdm extends Component {
                                                     {
                                                         this.state.listaPacientes.map((paciente) => {
                                                             return (
-                                                                <option key={paciente.idPaciente} value={paciente.idPaciente}>{paciente.idUsuarioNavigation.nomeUsuario}</option>
+                                                                <option key={paciente.idPaciente} value={paciente.idPaciente}>{paciente.nomePaciente}</option>
                                                             )
                                                         })
                                                     }
@@ -265,7 +265,7 @@ export default class consultasAdm extends Component {
                                                     {
                                                         this.state.listaMedicos.map((medico) => {
                                                             return (
-                                                                <option key={medico.idMedico} value={medico.idMedico}>{medico.idUsuarioNavigation.nomeUsuario}</option>
+                                                                <option key={medico.idMedico} value={medico.idMedico}>{medico.nomeMedico}</option>
                                                             )
                                                         })
                                                     }
